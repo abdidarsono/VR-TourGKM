@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <title>Lantai UKM GKM 2</title>
+</head>
+<body>
+<style>
+  .modals1,
+  .modals2,
+  .modals3,
+  .modals4 {
+    transition: .5s all ease;
+    display: none;
+    place-items: center;
+    position: absolute;
+    z-index: 9999;
+    background-color: rgba(0,0,0,.5);
+    height: 100vh;
+    width: 100%;
+  }
+  .modals__content {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    transition: .9s all ease;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 370px;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    background-color: #FC8823;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    text-align: justify;
+  }
+  .modals__description {
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #FC8823;
+    color: white;
+    background-color: #2E3A50;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .modals__title {
+    align-self: center;
+  }
+  .modals__description span,
+  .modals__multiple {
+    align-self: baseline;
+  }
+  .modals__closefirst,
+  .modals__closesecond,
+  .modals__closethird,
+  .modals__closefourth {
+    position: fixed;
+    display: grid;
+    place-items: center;
+    transform: translate(400px, -10px);
+    color: white;
+    font-weight: 600;
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    background-color: #FC8823;
+    cursor: pointer;
+  }
+  .modals__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2E3A50;
+    background-size: contain;
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+  }
+  .modals1 .modals__image {
+    background: url(./assets/ruangan-bios.png) center center no-repeat;
+  }
+  .modals2 .modals__image {
+    background: url(./assets/ruangan-robotik.png) center center no-repeat;
+  }
+  .modals3 .modals__image {
+    background: url(./assets/ruangan-lki.png) center center no-repeat;
+  }
+  .modals4 .modals__image {
+    background: url(./assets/ruangan-rion.png) center center no-repeat;
+  }
+</style>
+  <a-scene>
+    <!-- assets for action -->
+    <a-assets>
+      <img id="Info1" src="./assets/info.png" alt="info button">
+      <img id="Location8" src="./assets/8.jpg" alt="">
+    </a-assets>
+
+    <!-- skybox image for gedung-luar-gkm -->
+    <a-sky src="#Location8"></a-sky>
+
+    <!-- text information place -->
+    <a-text 
+      font="kelsonsans" 
+      value="UKM Bios"
+      width="6" 
+      position="-2.3 1.25 -4.5"
+      rotation="0 0 0"
+    >
+    </a-text>
+
+    <!-- info -->
+    <a-entity
+      class="infobtn1"
+    >
+      <a-image
+        src="#Info1"
+        width="0.5"
+        height="0.5"
+        position="-1.3 2 -3.5"
+        rotation="0 0 0"
+      >
+      </a-image>
+    </a-entity>
+
+    <a-text 
+      font="kelsonsans" 
+      value="UKM Robotika"
+      width="6" 
+      position="3.8 1.25 -4.2"
+      rotation="0 -50 0"
+    >
+    </a-text>
+
+    <!-- info -->
+    <a-entity
+      class="infobtn2"
+    >
+      <a-image
+        src="#Info1"
+        width="0.5"
+        height="0.5"
+        position="4.3 2 -3.5"
+        rotation="0 -50 0"
+      >
+      </a-image>
+    </a-entity>
+
+    <a-text 
+      font="kelsonsans" 
+      value="UKM LKI-AMD"
+      width="6" 
+      position="2.7 1.2 3.5"
+      rotation="0 -150 0"
+    >
+    </a-text>
+
+    <!-- info -->
+    <a-entity
+      class="infobtn3"
+    >
+      <a-image
+        src="#Info1"
+        width="0.5"
+        height="0.5"
+        position="1.8 2 3.5"
+        rotation="0 -150 0"
+      >
+      </a-image>
+    </a-entity>
+
+    <a-text 
+      font="kelsonsans" 
+      value="UKM Raion"
+      width="6" 
+      position="-3.5 1.3 3.8"
+      rotation="0 -220 0"
+    >
+    </a-text>
+
+    <!-- info -->
+    <a-entity
+      class="infobtn4"
+    >
+      <a-image
+        src="#Info1"
+        width="0.5"
+        height="0.5"
+        position="-4 2 3.5"
+        rotation="0 150 0"
+      >
+      </a-image>
+    </a-entity>
+
+    <!-- links for teleport-->
+    <a-entity 
+      geometry="primitive: circle; 
+      radius: 1" 
+      material="color: #FC8823; 
+      side: double;" 
+      position="-14 0.5 -1.5" 
+      rotation="0 100 0" 
+      look-at="#cursor" 
+      link="href: location3.html"
+    >
+      <a-entity 
+        text="value: Viewarea GKM 3; 
+        color: #FFFFFF; 
+        width: 25; 
+        align: center; 
+        shader: msdf; 
+        font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/cabin/Cabin-Medium.json" 
+        position="0 -0.4 0"
+      >
+      </a-entity>
+    </a-entity>
+    <a-entity 
+      geometry="primitive: circle; 
+      radius: 1" 
+      material="color: #FC8823; 
+      side: double;" 
+      position="14 0 0.5" 
+      rotation="0 -100 0" 
+      look-at="#cursor" 
+      link="href: location9.html"
+    >
+      <a-entity 
+        text="value: Middle Hall UKM; 
+        color: #FFFFFF; 
+        width: 25; 
+        align: center; 
+        shader: msdf; 
+        font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/cabin/Cabin-Medium.json" 
+        position="0 -0.4 0"
+      >
+      </a-entity>
+    </a-entity>
+
+    <!-- modals info 1-->
+    <div class="modals1">
+      <div class="modals__content">
+        <div class="modals__closefirst">x</div>
+        <div class="modals__image">
+        </div>
+        <h2 class="modals__title">BIOS</h2>
+        <div class="modals__description">
+          DPM FILKOM adalah badan perwakilan legislatif mahasiswa yang memiliki tugas untuk mengemban kedaulatan dan memberikan kebijakan yang mencerminkan keinginan mahasiswa FILKOM.
+          <span>Sususnan Organisasi DPM</span>
+          <div class="modals__multiple">
+            <ul>
+              <li class="modals__multiple-detail">Presdir</li>
+              <li class="modals__multiple-detail">Wapresdir I</li>
+              <li class="modals__multiple-detail">Wapresdir II</li>
+              <li class="modals__multiple-detail">Divisi - Divisi</li>
+            </ul>
+            <div class="modals__watermark">Click Here to Know More</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modals2">
+      <div class="modals__content">
+        <div class="modals__closesecond">x</div>
+        <div class="modals__image">
+        </div>
+        <h2 class="modals__title">ROBOTIKA</h2>
+        <div class="modals__description">
+          Komunitas Robotika Fakultas Ilmu Komputer merupakan wadah bagi mahasiswa FILKOM UB yang merupakan bagian dari laboratorium Sistem Komputer dan Robotika FILKOM UB.
+          <div class="modals__multiple">
+            <ul>
+            </ul>
+            <div class="modals__watermark">Click Here to Know More</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modals3">
+      <div class="modals__content">
+        <div class="modals__closethird">x</div>
+        <div class="modals__image">
+        </div>
+        <h2 class="modals__title">LKI-AMD</h2>
+        <div class="modals__description">
+          Lembaga Kajian Islam Al-Fatih Muslim Drenalin (LKI-AMD) merupakan sebuah lembaga dakwah yang ada di Fakultas Ilmu Komputer Universitas Brawijaya (FILKOM UB).
+          <div class="modals__multiple">
+            <ul>
+            </ul>
+            <div class="modals__watermark">Click Here to Know More</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modals4">
+      <div class="modals__content">
+        <div class="modals__closefourth">x</div>
+        <div class="modals__image">
+        </div>
+        <h2 class="modals__title">RAION Studio</h2>
+        <div class="modals__description">
+          RAION Studio adalah wadah pengembangan kreatifitas dan inovasi yang berfokus pada pengembangan aplikasi mobile bagi mahasiswa Fakultas Ilmu Komputer (FILKOM).
+          <div class="modals__multiple">
+            <ul>
+            </ul>
+            <div class="modals__watermark">Click Here to Know More</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+  <!-- cursor and camera -->
+  <a-entity>
+    <a-camera>
+      <a-cursor></a-cursor>
+    </a-camera>
+  </a-entity>
+  </a-scene>
+<script>
+
+  const modalsFirst = document.querySelector(".modals1")
+  const modalsSecond = document.querySelector(".modals2")
+  const modalsThird = document.querySelector(".modals3")
+  const modalsFourth = document.querySelector(".modals4")
+  const infoBtnFirst = document.querySelector(".infobtn1")
+  const infoBtnSecond = document.querySelector(".infobtn2")
+  const infoBtnThird = document.querySelector(".infobtn3")
+  const infoBtnFourth = document.querySelector(".infobtn4")
+  const removeBtnFirst = document.querySelector('.modals__closefirst');
+  const removeBtnSecond = document.querySelector('.modals__closesecond');
+  const removeBtnThird = document.querySelector('.modals__closethird');
+  const removeBtnFourth = document.querySelector('.modals__closefourth');
+
+  removeBtnFirst.addEventListener("click", function() {
+    modalsFirst.style.display = "none"
+  })
+
+  removeBtnSecond.addEventListener("click", function() {
+    modalsSecond.style.display = "none"
+  })
+
+  removeBtnThird.addEventListener("click", function() {
+    modalsThird.style.display = "none"
+  })
+
+  removeBtnFourth.addEventListener("click", function() {
+    modalsFourth.style.display = "none"
+  })
+
+  infoBtnFirst.addEventListener("click", function() {
+    modalsFirst.style.display = "grid"
+  })
+
+  infoBtnSecond.addEventListener("click", function() {
+    modalsSecond.style.display = "grid"
+  })
+
+  infoBtnThird.addEventListener("click", function() {
+    modalsThird.style.display = "grid"
+  })
+
+  infoBtnFourth.addEventListener("click", function() {
+    modalsFourth.style.display = "grid"
+  })
+</script>
+</body>
+</html>

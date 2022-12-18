@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <title>Location 5</title>
+</head>
+
+<style>
+
+  .modals1 {
+    transition: .5s all ease;
+    display: none;
+    place-items: center;
+    color: white;
+    position: absolute;
+    z-index: 9999;
+    background-color: rgba(0,0,0,.5);
+    height: 100vh;
+    width: 100%;
+  }
+  .modals__content {
+    transition: .9s all ease;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 370px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    color: black;
+    text-align: justify;
+  }
+  .modals__close {
+    position: fixed;
+    display: grid;
+    place-items: center;
+    transform: translate(400px, -10px);
+    color: black;
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    background-color: white;
+    cursor: pointer;
+  }
+  .modals__image {
+    width: 100%;
+    background-color: red;
+    height: 150px;
+    border-radius: 10px;
+  }
+  
+
+</style>
+
+<body>
+  <a-scene>
+    <!-- assets for action -->
+    <a-assets>
+      <img id="Location5" src="./assets/5.jpg" alt="">
+    </a-assets>
+
+    <!-- skybox image for gedung-luar-gkm -->
+    <a-sky src="#Location5"></a-sky>
+
+    <!-- text information place -->
+    <a-text 
+      font="kelsonsans" 
+      value="Location 1" 
+      width="6" 
+      position="-2.5 0.25 -1.5"
+      rotation="0 15 0"
+    >
+    </a-text>
+
+    <!-- links for  teleport-->
+    <a-entity 
+      geometry="primitive: circle; 
+      radius: 1" 
+      material="color: orange; 
+      side: double;" 
+      position="-13 -1 5.5" 
+      rotation="0 100 0" 
+      look-at="#cursor" 
+      link="href: left-entry.html"
+    >
+      <a-entity 
+        text="value: Left Entry; 
+        color: #FFFFFF; 
+        width: 25; 
+        align: center; 
+        shader: msdf; 
+        font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/cabin/Cabin-Medium.json" 
+        position="0 -0.4 0"
+      >
+      </a-entity>
+    </a-entity>
+
+    <!-- modals info 1-->
+    <div class="modals1">
+      <div class="modals__content">
+        <div class="modals__close">x</div>
+        <div class="modals__image"></div>
+        <h2 class="modals__title">This is Tittle</h2>
+        <div class="modals__description">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, ab! Illum officia quod quo provident eveniet quaerat eaque quam excepturi consequatur laudantium error molestiae porro sunt, nobis doloribus, sapiente reiciendis.
+          <div class="modals__multiple">
+            <ul>
+              <li class="modals__multiple-detail"></li>
+              <li class="modals__multiple-detail"></li>
+              <li class="modals__multiple-detail"></li>
+              <li class="modals__multiple-detail"></li>
+            </ul>
+            <div class="modals__watermark"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- cursor and camera -->
+  <a-entity>
+    <a-camera>
+      <a-cursor></a-cursor>
+    </a-camera>
+  </a-entity>
+
+  </a-scene>
+</body>
+
+
+<script>
+
+  const modals = document.querySelector(".modals1")
+  const removeBtn = document.querySelector('.modals__close');
+
+  removeBtn.addEventListener("click", function() {
+    modals.style.display = "none"
+  })
+
+</script>
+</html>

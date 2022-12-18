@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <title>Lantai UKM GKM 2</title>
+</head>
+<body>
+<style>
+  .modals1,
+  .modals2 {
+    transition: .5s all ease;
+    display: none;
+    place-items: center;
+    position: absolute;
+    z-index: 9999;
+    background-color: rgba(0,0,0,.5);
+    height: 100vh;
+    width: 100%;
+  }
+  .modals__content {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    transition: .9s all ease;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 370px;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    background-color: #FC8823;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    text-align: justify;
+  }
+  .modals__description {
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #FC8823;
+    color: white;
+    background-color: #2E3A50;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .modals__title {
+    align-self: center;
+  }
+  .modals__description span,
+  .modals__multiple {
+    align-self: baseline;
+  }
+  .modals__closefirst,
+  .modals__closesecond {
+    position: fixed;
+    display: grid;
+    place-items: center;
+    transform: translate(400px, -10px);
+    color: white;
+    font-weight: 600;
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    background-color: #FC8823;
+    cursor: pointer;
+  }
+  .modals__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2E3A50;
+    background-size: contain;
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+  }
+  .modals1 .modals__image {
+    background: url(./assets/ruangan-lpm.png) center center no-repeat;
+  }
+  .modals2 .modals__image {
+    background: url(./assets/ruangan-krisma.png) center center no-repeat;
+  }
+</style>
+  <a-scene>
+    <!-- assets for action -->
+    <a-assets>
+      <img id="Info1" src="./assets/info.png" alt="info button">
+      <img id="Location9" src="./assets/9.jpg" alt="">
+    </a-assets>
+
+    <!-- skybox image for gedung-luar-gkm -->
+    <a-sky src="#Location9"></a-sky>
+
+    <!-- text information place -->
+    <a-text 
+      font="kelsonsans" 
+      value="UKM LPM Display"
+      width="6" 
+      position="4 1 -6"
+      rotation="0 1 0"
+    >
+    </a-text>
+
+    <!-- info -->
+    <a-entity
+      class="infobtn1"
+    >
+      <a-image
+        src="#Info1"
+        width="0.5"
+        height="0.5"
+        position="4.8 1.8 -6"
+        rotation="0 1 0"
+      >
+      </a-image>
+    </a-entity>
+
+     <a-text 
+      font="kelsonsans" 
+      value="UKM K-Risma"
+      width="6" 
+      position="-4 1 -6"
+      rotation="0 50 0"
+    >
+    </a-text>
+
+    <!-- info -->
+    <a-entity
+      class="infobtn2"
+    >
+      <a-image
+        src="#Info1"
+        width="0.5"
+        height="0.5"
+        position="-3 1.8 -6"
+        rotation="0 80 0"
+      >
+      </a-image>
+    </a-entity>
+
+    <!-- links for teleport-->
+    <a-entity 
+      geometry="primitive: circle; 
+      radius: 1" 
+      material="color: #FC8823; 
+      side: double;" 
+      position="1.5 0.5 -10.5" 
+      rotation="0 0 0" 
+      look-at="#cursor" 
+      link="href: location8.html"
+    >
+      <a-entity 
+        text="value: Middle Hall UKM; 
+        color: #FFFFFF; 
+        width: 25; 
+        align: center; 
+        shader: msdf; 
+        font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/cabin/Cabin-Medium.json" 
+        position="0 -0.4 0"
+      >
+      </a-entity>
+    </a-entity>
+    <a-entity 
+      geometry="primitive: circle; 
+      radius: 1" 
+      material="color: #FC8823; 
+      side: double;" 
+      position="14 -1.5 2.5" 
+      rotation="0 -100 0" 
+      look-at="#cursor" 
+      link="href: location1.html"
+    >
+      <a-entity 
+        text="value: Entry Hall; 
+        color: #FFFFFF; 
+        width: 25; 
+        align: center; 
+        shader: msdf; 
+        font: https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/cabin/Cabin-Medium.json" 
+        position="0 -0.4 0"
+      >
+      </a-entity>
+    </a-entity>
+
+    <!-- modals info 1-->
+    <div class="modals1">
+      <div class="modals__content">
+        <div class="modals__closefirst">x</div>
+        <div class="modals__image">
+        </div>
+        <h2 class="modals__title">LPM Display</h2>
+        <div class="modals__description">
+          LPM DISPLAY adalah Lembaga Pers Mahasiswa yaitu sebuah lembaga semi otonom yang bergerak dalam dunia jurnalistik. LPM di Fakultas Ilmu Komputer (FILKOM) menamakan dirinya LPM DISPLAY.
+          <div class="modals__multiple">
+            <ul>
+            </ul>
+            <div class="modals__watermark">Click Here to Know More</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modals2">
+      <div class="modals__content">
+        <div class="modals__closesecond">x</div>
+        <div class="modals__image">
+        </div>
+        <h2 class="modals__title">K-RISMA</h2>
+        <div class="modals__description">
+          Kelompok Riset Mahasiswa (K-RISMA) salah satu Lembaga Semi Otonom di Fakultas Ilmu Komputer, Universitas Brawijaya yang bergerak dalam bidang riset dan penalaran. Tujuan pertama, K-RISMA berperan dalam membantu mahasiswa yang memiliki ide dalam pembuatan teknologi, untuk dapat menuangkannya dalam bentuk tulisan.
+          <div class="modals__multiple">
+            <ul>
+            </ul>
+            <div class="modals__watermark">Click Here to Know More</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- cursor and camera -->
+  <a-entity>
+    <a-camera>
+      <a-cursor></a-cursor>
+    </a-camera>
+  </a-entity>
+  </a-scene>
+<script>
+  const modalsFirst = document.querySelector(".modals1")
+  const modalsSecond = document.querySelector(".modals2")
+  const infoBtnFirst = document.querySelector(".infobtn1")
+  const infoBtnSecond = document.querySelector(".infobtn2")
+  const removeBtnFirst = document.querySelector('.modals__closefirst');
+  const removeBtnSecond = document.querySelector('.modals__closesecond');
+
+  removeBtnFirst.addEventListener("click", function() {
+    modalsFirst.style.display = "none"
+  })
+
+  removeBtnSecond.addEventListener("click", function() {
+    modalsSecond.style.display = "none"
+  })
+
+  infoBtnFirst.addEventListener("click", function() {
+    modalsFirst.style.display = "grid"
+  })
+
+  infoBtnSecond.addEventListener("click", function() {
+    modalsSecond.style.display = "grid"
+  })
+</script>
+</body>
+</html>
